@@ -4,7 +4,7 @@
 #Author :- Pushkar Morey
 #Date :- 9 mar 2020
 
-  meter=0.3048
+ meter=0.3048
 
 # inch to feet conversion
   read -p "Enter Inches.." inch
