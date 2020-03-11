@@ -1,0 +1,204 @@
+
+2)pprint last 4 frequently used urls count in sorted order...?
+
+cat access.log |awk '{print $11}' |\sort | uniq -c | sort -rn | column -t | head -4
+1475  "https://fundoopush-dev.bridgelabz.com/login"
+1141  "https://fundoopush-dev.bridgelabz.com/dashboard/article"
+377   "-"
+176   "https://fundoopush-dev.bridgelabz.com/add-post"
+
+*************************************************************************************************************************************
+
+3)move the text file to respectiv folder..
+
+  #!/bin/bash 
+
+for file in `ls *.txt`
+do
+        foldername=`echo $file | awk -F. '{print $1}'`
+        mkdir $foldername
+        mv $file $foldername
+done
+
+**************************************************************************************************************************************
+4)Append current date to all log file..
+
+  
+#!/bin/bash
+date=`date +%d%m%Y`
+for file in `ls *.1`
+do
+        name=`echo $file | awk -F. '{print $1}'`
+        name1=`echo $file | awk -F. '{print $2}'`
+        echo $name-$date.$name1
+done
+
+**************************************************************************************************************************************
+
+5)Create folde if it is not there else print it is exist..
+
+ !/bin/bash
+
+read foldername
+if [ -d $foldername ]
+then
+        echo "This folder is exist.."
+else
+        mkdir $foldername
+        echo "your folder is created"
+fi        
+
+****************************************************************************************************************************************
+
+6) move data to backup folder...
+
+#!/bin/bash -x
+for file in `find /var/log -type f -mtime +7 -ls`
+do
+	cp $file back
+	echo "your files are moved" 
+	
+done
+
+*******************************************************************************************************************************
+7)
+
+
+ if [ $? -eq 0 ];  then echo "command successful"; else  echo "unsuccessful"; fi
+unsuccessful
+
+
+******************************************************************************************************************************
+
+8)
+
+
+ls
+alternatives.log        auth.log.3.gz    installer
+alternatives.log.1      auth.log.4.gz    journal
+alternatives.log.10.gz  boot.log         kern.log
+alternatives.log.11.gz  bootstrap.log    kern.log.1
+alternatives.log.2.gz   btmp             kern.log.2.gz
+alternatives.log.3.gz   btmp.1           kern.log.3.gz
+alternatives.log.4.gz   cups             kern.log.4.gz
+alternatives.log.5.gz   dist-upgrade     lastlog
+alternatives.log.6.gz   dpkg.log         mongodb
+alternatives.log.7.gz   dpkg.log.1       mysql
+alternatives.log.8.gz   dpkg.log.10.gz   rabbitmq
+alternatives.log.9.gz   dpkg.log.11.gz   redis
+anydesk.trace           dpkg.log.2.gz    speech-dispatcher
+apache2                 dpkg.log.3.gz    syslog
+apport.log              dpkg.log.4.gz    syslog.1
+apport.log.1            dpkg.log.5.gz    syslog.2.gz
+apport.log.2.gz         dpkg.log.6.gz    syslog.3.gz
+apport.log.3.gz         dpkg.log.7.gz    syslog.4.gz
+apport.log.4.gz         dpkg.log.8.gz    syslog.5.gz
+apport.log.5.gz         dpkg.log.9.gz    syslog.6.gz
+apport.log.6.gz         elasticsearch    syslog.7.gz
+apport.log.7.gz         faillog          tallylog
+apt                     fontconfig.log   unattended-upgrades
+auth.log                gdm3             wtmp
+auth.log.1              gpu-manager.log  wtmp.1
+auth.log.2.gz           hp
+user@FH400:/var/log$ ls | grep -w syslog 
+syslog
+syslog.1
+syslog.2.gz
+syslog.3.gz
+syslog.4.gz
+syslog.5.gz
+syslog.6.gz
+syslog.7.gz
+user@FH400:/var/log$ ls | grep -w syslog | wc -w
+8
+
+**************************************************************************************************************************************
+9)Employ questions.....
+
+
+user@FH400:~/Desktop/pushkar/linux-content$ cat data.csv
+Id EmployeeName JobTitle        BasePay OvertimePay OtherPay TotalPay TotalPayBenefits
+1  NATHANIEL    GM              167411  0           400184   567595   567595
+2  GARY         CAPTAIN         155966  245131      137811   538909   538909
+3  ALBERT       CAPTAIN         212739  106088      16452    335279   335279
+4  CHRISTOPHER  MECHANIC        77916   56120       198306   332343   332343
+5  PATRICK      DEPUTYCHIEF     134401  9737        182234   326373   326373
+6  DAVID        ASSTDEPUTY      118602  8601        189082   316285   316285
+7  ALSON        BATTALIONCHIEF  92492   89062       134426   315981   315981
+8  DAVID        DEPUTYDIRECTOR  256576  0           51322    307899   307899
+10 JOANNE       CHIEF           285262  0           17115    302377   302377
+12 PATRICIA     CAPTAIN         99722   87082       110804   297608   297608
+13 EDWARD       EXECUTIVE       294580  0           0        294580   294580
+user@FH400:~/Desktop/pushkar/linux-content$ awk '{print $2,$7 > 10000}'
+
+^X^C
+user@FH400:~/Desktop/pushkar/linux-content$ cat data.csv | awk $4>10000 '{print $2,$7}'
+user@FH400:~/Desktop/pushkar/linux-content$ cat data.csv | awk '$4>10000 {print $2, $7}'
+EmployeeName TotalPay
+NATHANIEL 567595
+GARY 538909
+ALBERT 335279
+CHRISTOPHER 332343
+PATRICK 326373
+DAVID 316285
+ALSON 315981
+DAVID 307899
+JOANNE 302377
+PATRICIA 297608
+EDWARD 294580
+user@FH400:~/Desktop/pushkar/linux-content$ cat data.csv | awk '$4>10000 {print $2, $7}' | column -t
+EmployeeName  TotalPay
+NATHANIEL     567595
+GARY          538909
+ALBERT        335279
+CHRISTOPHER   332343
+PATRICK       326373
+DAVID         316285
+ALSON         315981
+DAVID         307899
+JOANNE        302377
+PATRICIA      297608
+EDWARD        294580
+user@FH400:~/Desktop/pushkar/linux-content$ cat data.csv | awk '$4 > 10000 {print $2 , $7}' | column -t
+EmployeeName  TotalPay
+NATHANIEL     567595
+GARY          538909
+ALBERT        335279
+CHRISTOPHER   332343
+PATRICK       326373
+DAVID         316285
+ALSON         315981
+DAVID         307899
+JOANNE        302377
+PATRICIA      297608
+EDWARD        294580
+user@FH400:~/Desktop/pushkar/linux-content$ cat data.csv | grep -w CAPTAIN
+2  GARY         CAPTAIN         155966  245131      137811   538909   538909
+3  ALBERT       CAPTAIN         212739  106088      16452    335279   335279
+12 PATRICIA     CAPTAIN         99722   87082       110804   297608   297608
+user@FH400:~/Desktop/pushkar/linux-content$ cat data.csv | grep -w CAPTAIN | awk 'BEGIN { sum=0 } { sum = sum+$7 } END {print sum}'
+1171796
+user@FH400:~/Desktop/pushkar/linux-content$ cat data.csv | awk '$5<10000 && $5>7000 {print $3, $5}' | column -t
+DEPUTYCHIEF  9737
+ASSTDEPUTY   8601
+user@FH400:~/Desktop/pushkar/linux-content$ cat data.csv | awk '{sum+=$4} END {print sum/NR}' 
+157972
+
+
+****************************************************************************************************************************************
+
+10) set USERSECRET if it is not in there...
+
+#!/bin/bash
+
+if [[ -z $(env | grep USERSECRET | grep dH34xJaa23) ]]
+then 
+        export USERSECRET=dH34xJaa23
+else
+        echo "ALREADY EXISTS"
+fi
+
+
+
+
+
