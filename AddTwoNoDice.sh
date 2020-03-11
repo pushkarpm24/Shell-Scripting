@@ -9,7 +9,7 @@ diceOne=$(( RANDOM % 6 + 1 ))
 diceTwo=$(( RANDOM % 6 + 1 ))
 
 #Store sum of two dice in veriable sum
-sum=$(( $diceOne + $diceTwo ))
+sum=$(( $diceOne + $diceTwo )) 
 
 echo "no. 1 is :" $diceOne
 echo "no. 2 is :" $diceTwo
