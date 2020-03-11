@@ -17,4 +17,5 @@ echo " sum is :" $sum
 
 #getting average of five variable
 avg=$(( $sum / 5 ))
+
 echo "Avg is :" $avg
