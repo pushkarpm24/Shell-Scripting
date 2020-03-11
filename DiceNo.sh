@@ -4,6 +4,5 @@
 #Author :- Pushkar Morey
 #Date :- 9 mar 2020
 
-
 dice=$(( RANDOM%6 + 1 ))
 echo $dice
