@@ -3,6 +3,7 @@
 #problem statement :- Print which day comes in a given date
 #Author :- Pushkar Morey
 #Date :- 9 mar 2020
+
 #giving month day and year as a command line argument
 month=$1
 day=$2
