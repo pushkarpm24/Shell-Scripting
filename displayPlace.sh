@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-#Problem Statement :- Check if day of month is between march 20 and june 20
+#Problem Statement :- Check the given number and display in words
 #Author :- Pushkar Morey
 #Date :- 12 mar 2020
 
